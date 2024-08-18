@@ -4,18 +4,21 @@
     box-shadow: 0 4x 8px #ccc;
     margin: 16px;
     padding: 16px;
-    max-width: 200px;
+    max-width: 400px;
     text-align: center;
     background-color: #fff;
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 16px;
 }
 
 .book-title {
     font-size: 1.2em;
     margin-bottom: 8px;
     color: #333;
+    text-align: center;
+    width: 100%;
 }
 
 .book-thumbnail {
@@ -24,8 +27,29 @@
     margin-bottom: 8px;
 }
 
+.book-description {
+    font-size: 0.9em;
+    color: #666;
+    margin: 10px 0px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+    line-clamp: 4;
+}
+
 .book-authors, .book-publisher {
     font-size: 0.9em;
     color: #666;
-    margin: 4px 0;
+    margin: 10px 0;
+}
+
+.button {
+    margin-left: auto;
+    margin-top: 10px;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    text-align: center;
+    cursor: pointer;
 }

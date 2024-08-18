@@ -3,7 +3,8 @@ import { FaSearch } from "react-icons/fa";
 import './search_bar.css';
 
 const BASE_URL = 'https://www.googleapis.com/books/v1/volumes';
-const API_KEY = 'AIzaSyAD7cNQBOhaeJilP3ySL7LEEtHpmtHgWTw'
+//const API_KEY = 'AIzaSyAD7cNQBOhaeJilP3ySL7LEEtHpmtHgWTw'
+const API_KEY = process.env.REACT_APP_API_BOOK_KEY;
 
 const get_books_url = (query) => {
   return `${BASE_URL}?q=${query}&key=${API_KEY}`;
