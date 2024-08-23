@@ -1,0 +1,60 @@
+
+/* Adds border with margins between cards using flexbok with child elements in a row */
+.book-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4x 8px #ccc;
+    margin: 16px;
+    padding: 16px;
+    max-width: 400px;
+    text-align: center;
+    background-color: #fff;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 16px;
+}
+
+
+.book-title {
+    font-size: 1.2em;
+    margin-bottom: 8px;
+    color: #333;
+    text-align: center;
+    width: 100%;
+}
+
+.book-thumbnail {
+    width: 100px;
+    height: auto;
+    margin-bottom: 8px;
+}
+
+/* Adds margin and uses webkit box to limit lines to 4 vertically */
+.book-description {
+    font-size: 0.9em;
+    color: #666;
+    margin: 10px 0px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+    line-clamp: 4;
+}
+
+.book-authors, .book-publisher {
+    font-size: 0.9em;
+    color: #666;
+    margin: 10px 0;
+}
+
+/* Creates button with no border but needs to be moved */
+.button {
+    margin-left: auto;
+    margin-top: 10px;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    text-align: center;
+    cursor: pointer;
+}

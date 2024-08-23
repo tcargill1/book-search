@@ -1,10 +1,13 @@
+/* App takes full screen */
 .App {
     height: 100%;
     width: 100%;
 }
 
+/* Adds padding to top of container with 40% of parent width, 
+margin centered to the parent, and aligning children elements to center*/
 .search-bar-container {
-    padding-top: 30vh;
+    padding-top: 30vh; 
     width: 40%;
     margin: auto;
     display: flex;
@@ -13,13 +16,15 @@
     min-width: 200px;
 }
 
+/* Adds 50px above container and uses flexbox with centered child elements*/
 .container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     margin-top: 50px;
-}
+}  
 
+/* Book card will expand and shrink if needed at 30% parent's size, with 10px space, and rounded border */
 .book {
     flex: 1 1 30%;
     margin: 10px;
@@ -30,11 +35,13 @@
     background: #f9f9f9;
 }
 
+/* Height and width of image based on book card */
 .book-thumbnail {
     max-width: 100%;
     height: auto;
 }
 
+/* Adds 30px space above it with centered text */
 .empty {
     display: flex;
     margin-top: 30px;

@@ -1,17 +1,20 @@
+/* Fills up the browser with html and body*/
 html, body {
     height: 100%;
     margin: 0;
     padding: 0;
-}
+} 
 
+/* Fills up browser's height */
 #root {
     height: 100%;
-}
+} 
 
+/* Adds border box and sans-serif to all elements*/
 * {
     box-sizing: border-box;
     margin: 0px;
     padding: 0px;
     font-family: Helvetica, sans-serif;
-}
+} 
 

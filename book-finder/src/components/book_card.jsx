@@ -1,13 +1,15 @@
 import React from 'react';
-import './book_card.css';
+import '../styles/book_card.css';
 
 const BookCard = ({ book }) => {
 
+    // Function that opens window to book info when clicked
     const handleButtonClick = () => {
         return (window.open(book.volumeInfo.infoLink, '_blank', ))
     }
 
     return (
+        // Returns book card to app
         <div className="book">
             
             <div>

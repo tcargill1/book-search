@@ -7,5 +7,5 @@ import './index.css';
 // Create a root element
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
-// Render the App component
+// Render the App component for the react app
 root.render(<App />);
