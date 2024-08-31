@@ -10,31 +10,21 @@ const BookCard = ({ book }) => {
 
     return (
         // Returns book card to app
-        <div className="book">
-            
-            <div>
+        <div className="book-card">
+         
             <h3 className="book-title">{book.volumeInfo.title}</h3>
-            </div>
-
-            <div>
-                <img className="book-thumbnail" src={book.volumeInfo.imageLinks.thumbnail} alt="No images available"></img>
-            </div>
+            
+            <img className="book-thumbnail" src={book.volumeInfo.imageLinks.thumbnail} alt="No images available"></img>
+            
+            <p className="book-description"> {book.volumeInfo.description}</p>
+            
+            <p className="book-authors">{book.volumeInfo.authors}</p>
+            
+            <p className="book-publisher">{book.volumeInfo.publisher}</p>
 
             <button className = "button" onClick={handleButtonClick}>
                 More here
             </button>
-            
-            <div>
-                <p className="book-description"> {book.volumeInfo.description}</p>
-            </div>
-
-            <div>
-                <p className="book-authors">{book.volumeInfo.authors}</p>
-            </div>
-
-            <div>
-                <p className="book-publisher">{book.volumeInfo.publisher}</p>
-            </div>
 
         </div>
     )

@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, send_from_directory, request, jsonify
 from flask_cors import CORS
 from dotenv import load_dotenv
 from sqlalchemy import create_engine, Integer, String, Column
@@ -9,11 +9,15 @@ import os
 # Get environment variables
 load_dotenv("../book-finder/.env")
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='..book-finder/build')
 app.secret_key = os.getenv('SECRET_KEY_FLASK') # Not sure
 
 # To connect to react
 CORS(app)
+
+@app.route('/')
+def serve():
+    return send_from_directory(app.static_folder, 'index.html')
 
 # Gets database url to create database
 database_url = os.environ.get("DATABASE_URL")

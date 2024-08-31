@@ -10,11 +10,11 @@
     text-align: center;
     background-color: #fff;
     display: flex;
-    flex-direction: row;
-    align-items: flex-start;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
     gap: 16px;
 }
-
 
 .book-title {
     font-size: 1.2em;
@@ -49,12 +49,13 @@
 }
 
 /* Creates button with no border but needs to be moved */
-.button {
-    margin-left: auto;
-    margin-top: 10px;
+.book-card .button {
     padding: 8px 12px;
     border: none;
     border-radius: 4px;
     text-align: center;
-    cursor: pointer;
+    cursor: pointer;   
+    position: absolute;
+    bottom: 200px;
+    align-self: center;
 }

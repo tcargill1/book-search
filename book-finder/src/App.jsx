@@ -37,7 +37,7 @@ function App() {
         {/*Renders search bar and sets results while typing and the final search when entered */}
         <SearchBar setResults = {handleSearch} onSearch={handleFinalSearch} />
 
-        {/* Renders ongoingsearch results list when showResults is true and search has started*/}
+        {/* Renders ongoing search results list when showResults is true and search has started*/}
         {showResults && results.length > 0 && (<SearchResultsList results = {results} onClose={handleCloseRequests}/>)}
 
         {/* Renders search history button to app*/}
