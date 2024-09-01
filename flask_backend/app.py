@@ -6,6 +6,7 @@ from sqlalchemy import create_engine, Integer, String, Column
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy import inspect
+from datetime import datetime
 import os
 
 # Get environment variables
@@ -41,7 +42,7 @@ db = SQLAlchemy(app)
 class SearchHistory(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     search_query = db.Column(db.String(80), nullable=False)
-    timestamp = db.Column(db.DateTime, nullable=False)
+    timestamp = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
 
 # Check if the 'search_history' table exists before creating it
 with app.app_context():
@@ -85,7 +86,7 @@ def get_history():
     searches = SearchHistory.query.order_by(SearchHistory.timestamp.desc()).all()
     search_history = []
     for s in searches:
-        search = {"id": s.id, "query": s.query, "timestamp": s.timestamp}
+        search = {"id": s.id, "query": s.search_query, "timestamp": s.timestamp}
         search_history.append(search)
     return jsonify(search_history), 200
 
