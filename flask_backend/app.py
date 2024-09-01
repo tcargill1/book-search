@@ -28,7 +28,7 @@ def serve(path):
         return send_from_directory(app.static_folder, 'index.html')
 
 # Gets database url to create database
-database_url = os.environ.get("DATABASE_URL")
+database_url = os.getenv("DATABASE_URL")
 engine = create_engine(database_url)
 Base = declarative_base()
 
