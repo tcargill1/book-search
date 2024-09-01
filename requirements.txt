@@ -17,7 +17,9 @@ markdown-it-py==3.0.0
 MarkupSafe==2.1.5
 mdurl==0.1.2
 packaging==24.1
+postgres==4.0
 psycopg2-binary==2.9.9
+psycopg2-pool==1.2
 Pygments==2.18.0
 python-dotenv==1.0.1
 requests==2.32.3
@@ -26,5 +28,3 @@ SQLAlchemy==2.0.32
 typing_extensions==4.12.2
 urllib3==2.2.2
 Werkzeug==3.0.3
-sqlalchemy-redshift==0.8.14  
-
