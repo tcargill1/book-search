@@ -3,6 +3,7 @@ from flask_cors import CORS
 from dotenv import load_dotenv
 from sqlalchemy import create_engine, Integer, String, Column
 from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.dialects import postgresql
 from sqlalchemy.orm import sessionmaker
 import os
 
