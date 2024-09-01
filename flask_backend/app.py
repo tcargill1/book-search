@@ -15,17 +15,17 @@ app.secret_key = os.getenv('SECRET_KEY_FLASK') # Not sure
 # To connect to react
 CORS(app)
 
-"""@app.route('/')
+@app.route('/')
 def serve():
-    return send_from_directory(app.static_folder, 'index.html')"""
+    return send_from_directory(app.static_folder, 'index.html')
 
-@app.route('/', defaults={'path': ''})
+"""@app.route('/', defaults={'path': ''})
 @app.route('/<path:path>')
 def serve(path):
     if path != "" and os.path.exists(app.static_folder + '/' + path):
         return send_from_directory(app.static_folder, path)
     else:
-        return send_from_directory(app.static_folder, 'index.html')
+        return send_from_directory(app.static_folder, 'index.html')"""
 
 # Gets database url to create database
 database_url = os.getenv("DATABASE_URL")
