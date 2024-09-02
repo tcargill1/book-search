@@ -12,9 +12,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-  
+    
   },
   "devDependencies": {
-   
+   "react-scripts": "^5.0.1"
   }
 }
