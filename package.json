@@ -6,7 +6,6 @@
   "scripts": {
     "start": "cd book-finder && npm start", 
     "build": "cd book-finder && npm run build",  
-    "start:flask": "cd flask_backend && flask run",  
     "heroku-postbuild": "cd book-finder && npm run build"  
   },
   "keywords": [],
