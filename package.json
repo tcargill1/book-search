@@ -1,20 +1,14 @@
 {
   "name": "book_search",
   "version": "1.0.0",
+  "license": "ISC",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "cd book-finder && npm start", 
-    "build": "cd book-finder && npm run build",  
-    "heroku-postbuild": "cd book-finder && npm run build"  
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "cd server && python app.py"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    
-  },
-  "devDependencies": {
-   "react-scripts": "^5.0.1"
-  }
+  "author": ""
 }
+
