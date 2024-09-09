@@ -18,10 +18,6 @@ app.secret_key = os.getenv('SECRET_KEY_FLASK') # Not sure
 # To connect to react
 CORS(app)
 
-"""@app.route('/')
-def serve():
-    return send_from_directory(app.static_folder, 'index.html')"""
-
 @app.route('/', defaults={'path': ''})
 @app.route('/<path:path>')
 def serve(path):
@@ -32,8 +28,6 @@ def serve(path):
 
 # Gets database url to create database
 database_url = os.getenv("DATABASE_URL")
-if database_url and database_url.startswith("postgres://"):
-    database_url = database_url.replace("postgres://", "postgresql://", 1)
 
 app.config['SQLALCHEMY_DATABASE_URI'] = database_url
 db = SQLAlchemy(app)
@@ -49,21 +43,6 @@ with app.app_context():
     inspector = inspect(db.engine)
     if not inspector.has_table('search_history'):
         db.create_all()
-    
-"""engine = create_engine(database_url)
-Base = declarative_base()
-
-# Creates a database from database url and base
-class SearchHistory(Base):
-    __tablename__ = 'search_history'
-    id = Column(Integer, primary_key =True)
-    query = Column(String, nullable=False)
-
-Base.metadata.create_all(engine)
-
-# Creates session for database
-Session = sessionmaker(bind=engine)
-session = Session()"""
 
 # Saves searches to the database session using post
 @app.route('/save-search', methods=['POST'])
