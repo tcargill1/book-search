@@ -15,6 +15,9 @@ load_dotenv("../book-finder/.env")
 app = Flask(__name__, static_folder='../book-finder/build', static_url_path='')
 app.secret_key = os.getenv('SECRET_KEY_FLASK') # Not sure
 
+print("Static folder path:", app.static_folder)
+
+
 # To connect to react
 CORS(app)
 
