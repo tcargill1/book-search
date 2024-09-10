@@ -9,7 +9,7 @@ export const SearchHistory = () => {
     
     // Function that updates the history of searches from flask database
     const fetchHistory = async () => {
-        const response = await axios.get('http://localhost:5000/get-history');
+        const response = await axios.get('https://book-search-4tcm.onrender.com/get-history');
         setHistory(response.data);
     };
     

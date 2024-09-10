@@ -50,7 +50,7 @@ export const SearchBar = ({ setResults, onSearch }) => {
 
     // Function that saves each search by fetching the flask database and posting it there
     const saveSearch = (query) => {
-        fetch('http://localhost:5000/save-search', {
+        fetch('https://book-search-4tcm.onrender.com/save-search', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
