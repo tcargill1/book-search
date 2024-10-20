@@ -1,4 +1,4 @@
-from flask import Flask, send_from_directory, request, jsonify
+from flask import Flask, send_from_directory, request, jsonify, session
 from flask_cors import CORS
 from dotenv import load_dotenv
 from flask_sqlalchemy import SQLAlchemy
@@ -7,12 +7,12 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy import inspect
 from datetime import datetime
+import uuid
 import os
 
 # Get environment variables
 # load_dotenv("../book-finder/.env")
 print("Database URL:", os.getenv("DATABASE_URL"))
-
 
 app = Flask(__name__, static_folder='../book-finder/build', static_url_path='')
 app.secret_key = os.getenv('SECRET_KEY_FLASK') # Not sure
@@ -37,6 +37,7 @@ db = SQLAlchemy(app)
 # Define your models here
 class SearchHistory(db.Model):
     id = db.Column(db.Integer, primary_key=True)
+    session_id = db.Column(db.String(255), nullable=False)
     search_query = db.Column(db.String(80), nullable=False)
     timestamp = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
 
@@ -49,12 +50,16 @@ with app.app_context():
 # Saves searches to the database session using post
 @app.route('/save-search', methods=['POST'])
 def save_search():
+    # Generate or use existing session ID
+    if "session_id" not in session:
+        session["session_id"] = str(uuid.uuid4())
+
     # Gets data as json
     data = request.json
     query = data.get('query')
     if query:
         # Adds new query to database class and commits
-        new_search = SearchHistory(search_query=query)
+        new_search = SearchHistory(session_id=session["session_id"], search_query=query)
         db.session.add(new_search)
         db.session.commit()
         return jsonify({"message": "Search saved successfully"}), 201
@@ -63,8 +68,11 @@ def save_search():
 # Gets search history from axios in react and adds them to a list that is posted to user
 @app.route('/get-history', methods=['GET'])
 def get_history():
+    if "session_id" not in session:
+        return jsonify({"error": "No session found"}), 400
+
     # Retrieves data in database and stores them in array based on id and query
-    searches = SearchHistory.query.order_by(SearchHistory.timestamp.desc()).all()
+    searches = SearchHistory.query.filter_by(session_id=session["session_id"]).order_by(SearchHistory.timestamp.desc()).all()
     search_history = []
     for s in searches:
         search = {"id": s.id, "query": s.search_query, "timestamp": s.timestamp}
