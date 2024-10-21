@@ -16,14 +16,14 @@ print("Database URL:", os.getenv("DATABASE_URL"))
 
 app = Flask(__name__, static_folder='../book-finder/build', static_url_path='')
 app.secret_key = os.getenv('SECRET_KEY_FLASK') # Not sure
-
-# To connect to react
-CORS(app, supports_credentials=True)
-
-app.config['SESSION_COOKIE_SECURE'] = True  # Secure for HTTPS
-app.config['SESSION_COOKIE_SAMESITE'] = 'None'  # Cross-site support
+app.config['SESSION_COOKIE_SAMESITE'] = 'None'  # Allow cross-origin cookies
+app.config['SESSION_COOKIE_SECURE'] = True  # Ensure cookies are sent over HTTPS
 app.config['SESSION_COOKIE_DOMAIN'] = '.booksearchapp.com'
 
+
+# To connect to react
+CORS(app, resources={r"/*": {"origins": ["https://booksearchapp.com", "https://book-search-4tcm.onrender.com"]}},
+     supports_credentials=True)
 
 @app.route('/', defaults={'path': ''})
 @app.route('/<path:path>')

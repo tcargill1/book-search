@@ -2,15 +2,15 @@ import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import '../styles/search_history.css'
 
-axios.defaults.withCredentials = true;
-
 export const SearchHistory = () => {
     const [history, setHistory] = useState([]); // For storing history and updating it in array
     const [showHistory, setToggleHistory] = useState(false); // For toggling history based on button being pressed
     
     // Function that updates the history of searches from flask database
     const fetchHistory = async () => {
-        const response = await axios.get('https://book-search-4tcm.onrender.com/get-history');
+        const response = await axios.get('https://book-search-4tcm.onrender.com/get-history', {
+            withCredentials: true,  // Include credentials (such as cookies)
+        });
         setHistory(response.data);
     };
     
