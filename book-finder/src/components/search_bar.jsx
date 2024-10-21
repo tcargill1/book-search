@@ -2,6 +2,8 @@ import React, {useState} from 'react';
 import { FaSearch } from "react-icons/fa";
 import '../styles/search_bar.css';
 
+axios.defaults.withCredentials = true;
+
 // Get google books api
 const BASE_URL = 'https://www.googleapis.com/books/v1/volumes';
 const API_KEY = process.env.REACT_APP_API_BOOK_KEY;

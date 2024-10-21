@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import '../styles/search_history.css'
 
+axios.defaults.withCredentials = true;
 
 export const SearchHistory = () => {
     const [history, setHistory] = useState([]); // For storing history and updating it in array
