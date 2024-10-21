@@ -18,7 +18,7 @@ app = Flask(__name__, static_folder='../book-finder/build', static_url_path='')
 app.secret_key = os.getenv('SECRET_KEY_FLASK') # Not sure
 
 # To connect to react
-CORS(app)
+CORS(app, resources={r"/*": {"origins": ["https://booksearchapp.com", "https://book-search-4tcm.onrender.com"]}})
 
 @app.route('/', defaults={'path': ''})
 @app.route('/<path:path>')
