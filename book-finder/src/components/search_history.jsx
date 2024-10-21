@@ -8,10 +8,19 @@ export const SearchHistory = () => {
     
     // Function that updates the history of searches from flask database
     const fetchHistory = async () => {
-        const response = await axios.get('https://book-search-4tcm.onrender.com/get-history', {
+        const backendUrl = getBackendUrl();
+        const response = await axios.get(`${backendUrl}/get-history`, {
             withCredentials: true,  // Include credentials (such as cookies)
         });
         setHistory(response.data);
+    };
+
+    const getBackendUrl = () => {
+        if (window.location.hostname === 'booksearchapp.com') {
+            return 'https://booksearchapp.com';
+        } else {
+            return 'https://book-search-4tcm.onrender.com';
+        }
     };
     
     // useEffect used to show updated history if showHistory is true

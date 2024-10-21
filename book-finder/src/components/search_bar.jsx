@@ -27,6 +27,14 @@ export const SearchBar = ({ setResults, onSearch }) => {
         );
     }
 
+    const getBackendUrl = () => {
+        if (window.location.hostname === 'booksearchapp.com') {
+            return 'https://booksearchapp.com';
+        } else {
+            return 'https://book-search-4tcm.onrender.com';
+        }
+    };
+
     // Function that fetches the data using the google books api based on the search, filters books, and sets results
     const fetchData = (query) => {
         fetch(get_books_url(query)).then((response) => response.json())
@@ -50,7 +58,8 @@ export const SearchBar = ({ setResults, onSearch }) => {
 
     // Function that saves each search by fetching the flask database and posting it there
     const saveSearch = (query) => {
-        fetch('https://book-search-4tcm.onrender.com/save-search', {
+        const backendUrl = getBackendUrl();
+        fetch(`${backendUrl}/save-search`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
