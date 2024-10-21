@@ -56,6 +56,7 @@ export const SearchBar = ({ setResults, onSearch }) => {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({ query }),
+            credentials: 'include'
         })
         .then((response) => response.json())
         .then((data) => {
