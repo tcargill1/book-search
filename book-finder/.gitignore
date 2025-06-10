@@ -10,8 +10,9 @@
 
 # production
 # /build
-/flask_backend/book_venv
 
+# For a specific virtual environment
+/flask_backend/book_venv/
 
 # misc
 .env
