@@ -27,6 +27,7 @@ export const SearchBar = ({ setResults, onSearch }) => {
         );
     }
 
+    // Function that gets URL of website in case website names were messing with the database
     const getBackendUrl = () => {
         if (window.location.hostname === 'booksearchapp.com') {
             return 'https://booksearchapp.com';
@@ -65,7 +66,7 @@ export const SearchBar = ({ setResults, onSearch }) => {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({ query }),
-            credentials: 'include'
+            credentials: 'include' // Includes credentials, such as cookies
         })
         .then((response) => response.json())
         .then((data) => {

@@ -18,10 +18,10 @@ app = Flask(__name__, static_folder='../book-finder/build', static_url_path='')
 app.secret_key = os.getenv('SECRET_KEY_FLASK') # Not sure
 app.config['SESSION_COOKIE_SAMESITE'] = 'None'  # Allow cross-origin cookies
 app.config['SESSION_COOKIE_SECURE'] = True  # Ensure cookies are sent over HTTPS
-app.config['SESSION_COOKIE_DOMAIN'] = '.booksearchapp.com'
+app.config['SESSION_COOKIE_DOMAIN'] = '.booksearchapp.com' # Making sure cookies reach website
 
 
-# To connect to react
+# To connect to react, also makes sure cookies/database work with websites
 CORS(app, resources={r"/*": {"origins": ["https://booksearchapp.com", "https://book-search-4tcm.onrender.com"]}},
      supports_credentials=True)
 

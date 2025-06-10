@@ -15,6 +15,7 @@ export const SearchHistory = () => {
         setHistory(response.data);
     };
 
+    // Function that gets URL of website in case website names were messing with the database
     const getBackendUrl = () => {
         if (window.location.hostname === 'booksearchapp.com') {
             return 'https://booksearchapp.com';
@@ -29,14 +30,11 @@ export const SearchHistory = () => {
             fetchHistory();
         }
     
-    }, {showHistory});
+    }, [showHistory]);
 
     // Function that toggles search history on display 
     const toggleHistory = () => {
-        setToggleHistory(!showHistory); 
-        if (!showHistory) {
-            fetchHistory();
-        }
+        setToggleHistory(prevShowHistory => !prevShowHistory); 
     }
 
     // Button text that changes depending on if showHistory is true
